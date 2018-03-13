@@ -1,0 +1,82 @@
+<!--
+***********************************************************************************************
+CrossCompile.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(LinuxCommonTargetsPath)\Linux.Cross.Common.props" />
+
+  <PropertyGroup>
+    <CrossCompileExtensionName>CrossCompile</CrossCompileExtensionName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- By default we use the same bitness as the hosting platform -->
+    <PreferredToolArchitecture Condition="'$(PreferredToolArchitecture)' == ''">ARM</PreferredToolArchitecture>
+    <PlatformToolset Condition="'$(PlatformToolset)' == ''">CrossCompile_GCC_1_0</PlatformToolset>
+    <DefaultPlatformToolset>CrossCompile_GCC_1_0</DefaultPlatformToolset>
+    <UseOfStl Condition="'$(UseOfStl)' == ''">libstdc++_shared</UseOfStl>
+
+    <ConfigurationType Condition="'$(ConfigurationType)' == ''">Application</ConfigurationType>
+    <TargetOSAndVersion>$(CrossCompileExtensionName)</TargetOSAndVersion>
+    <TargetPlatformIdentifier>ARM</TargetPlatformIdentifier>
+    <ToolsetISenseIdentifier>Linux</ToolsetISenseIdentifier>
+
+    <Platform Condition="'$(Platform)' == 'Win32'">ARM</Platform>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CrossCompileSdkPath Condition="'$(CrossCompileSdkPath)' == ''">C:\tools\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf</CrossCompileSdkPath>
+    <CrossCompileIncludePath Condition="'$(CrossCompileIncludePath)' == ''">$(CrossCompileSdkPath)\$(DebugMachineTypeSysRoot)</CrossCompileIncludePath>
+    <SourceMap Condition="'$(SourceMap)' == ''"></SourceMap>
+    <DebuggerSysroot Condition="'$(DebuggerSysroot)' == ''"></DebuggerSysroot>
+  </PropertyGroup>
+
+  <!-- Default values -->
+  <PropertyGroup>
+    <ExtensionsToDeleteOnClean Condition="'$(ExtensionsToDeleteOnClean)' == ''">*.d;*.tlog;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+    <PreBuildEventUseInBuild Condition="'$(PreBuildEventUseInBuild)' == ''">true</PreBuildEventUseInBuild>
+    <PreLinkEventUseInBuild Condition="'$(PreLinkEventUseInBuild)' == ''">true</PreLinkEventUseInBuild>
+    <PostBuildEventUseInBuild Condition="'$(PostBuildEventUseInBuild)' == ''">true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--  Initial Debugger page and debugger -->
+    <DebuggerFlavor>LinuxDebugger</DebuggerFlavor>
+    <DebuggerType>NativeOnly</DebuggerType>
+
+    <!-- Disables the default tools as they are not relevant to CrossCompile in the Property Pages -->
+    <UseDefaultProjectTools>false</UseDefaultProjectTools>
+
+    <!-- Hide default General Page to show our own -->
+    <UseDefaultGeneralPropertyPageSchema>false</UseDefaultGeneralPropertyPageSchema>
+
+    <!-- Guid used to define the group of items to show in the Add Item Dialog. -->
+    <AddItemTemplateGuid Condition="'$(AddItemTemplateGuid)' == ''">{EB21DC10-A496-4D6C-B221-49E4C7F8FB0B}</AddItemTemplateGuid>
+
+    <!-- Add all the paths to match Linux.props-->
+    <ISenseIncludePath>$(ISenseIncludePath);$(CrossCompileIncludePath)\arm-linux-gnueabihf\include\c++\7.2.1</ISenseIncludePath>
+
+    <IncludePath Condition="'$(DesignTimeBuild)' == 'true'">$(IncludePath);$(ISenseIncludePath)</IncludePath>
+    <UseMultiToolTask Condition="'$(UseMultiToolTask)' == ''">true</UseMultiToolTask>
+  </PropertyGroup>
+
+  <!--<ItemDefinitionGroup>
+    <Image>
+      <DeploymentContent Condition="'%(Image.DeploymentContent)'==''">true</DeploymentContent>
+    </Image>
+    <Media>
+      <DeploymentContent Condition="'%(Media.DeploymentContent)'==''">true</DeploymentContent>
+    </Media>
+    <Text>
+      <DeploymentContent Condition="'%(Text.DeploymentContent)'==''">true</DeploymentContent>
+    </Text>
+  </ItemDefinitionGroup>-->
+</Project>

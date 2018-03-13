@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCppPlatform", "NewCppPlatform\NewCppPlatform.csproj", "{C585DF11-7586-4594-B895-68EC4B0D942A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCTargets", "VCTargets\VCTargets.csproj", "{33F08A32-1F2D-4824-8B63-7A1E9AC9AF5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C585DF11-7586-4594-B895-68EC4B0D942A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C585DF11-7586-4594-B895-68EC4B0D942A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C585DF11-7586-4594-B895-68EC4B0D942A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C585DF11-7586-4594-B895-68EC4B0D942A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F08A32-1F2D-4824-8B63-7A1E9AC9AF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F08A32-1F2D-4824-8B63-7A1E9AC9AF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F08A32-1F2D-4824-8B63-7A1E9AC9AF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F08A32-1F2D-4824-8B63-7A1E9AC9AF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2771D94C-4790-4B3C-9083-0BED21D49698}
+	EndGlobalSection
+EndGlobal

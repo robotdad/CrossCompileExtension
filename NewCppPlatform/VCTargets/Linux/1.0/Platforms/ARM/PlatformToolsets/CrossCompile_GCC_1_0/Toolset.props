@@ -1,0 +1,68 @@
+﻿<!--
+***********************************************************************************************
+Toolset.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)ImportBefore\*.props" Condition="Exists('$(MSBuildThisFileDirectory)ImportBefore')" />
+
+  <PropertyGroup>
+    <ISensePlatform>arm</ISensePlatform>
+    <PlatformShortName>ARM</PlatformShortName>
+    <PlatformArchitecture>ARM</PlatformArchitecture>
+    <PlatformTarget>ARM</PlatformTarget>
+    <PlatformNativeArch>armv7</PlatformNativeArch>
+    <ThumbMode Condition="'$(ThumbMode)' == ''">Thumb</ThumbMode>
+    <PlatformTriplet>arm-linux-gnueabihf</PlatformTriplet>
+    <DebugMachineTypeSysRoot>arm-linux-gnueabihf</DebugMachineTypeSysRoot>
+    <DebugMachineTypeCpuType>cortex-a7</DebugMachineTypeCpuType>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\CrossCompile.props" />
+
+  <PropertyGroup>
+    <SysRoot Condition="'$(SysRoot)' == ''">$(CrossCompileSdkPath)\$(DebugMachineTypeSysRoot)</SysRoot>
+    <TargetTriplet>arm-linux-gnueabihf</TargetTriplet>
+    <CCompileToolExe Condition="'$(CCompileToolExe)' == ''">$(TargetTriplet)-gcc.exe</CCompileToolExe>
+    <CppCompileToolExe Condition="'$(CppCompileToolExe)' == ''">$(TargetTriplet)-gcc.exe</CppCompileToolExe>
+    <LdToolExe Condition="'$(LdToolExe)' == ''">$(TargetTriplet)-gcc.exe</LdToolExe>
+    <ArToolExe Condition="'$(ArToolExe)' == ''">$(TargetTriplet)-ar.exe</ArToolExe>
+    <Tools32SysRoot>$(CrossCompileSdkPath)\bin</Tools32SysRoot>
+    <ToolsSysRoot>$(Tools32SysRoot)</ToolsSysRoot>
+    <ToolsDir Condition="'$(ToolsDir)' == ''">$(ToolsSysRoot)</ToolsDir>
+    <ToolsArchitecture>Native32Bit</ToolsArchitecture>
+    <GDBPath Condition="'$(GDBPath)' == ''">$(ToolsSysRoot)\$(TargetTriplet)-gdb.exe</GDBPath>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <SysRoot>$(SysRoot)</SysRoot>
+      <AdditionalIncludeDirectories>$(StlIncludeDirectories);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ThumbMode Condition="'$(ThumbMode)' != ''">$(ThumbMode)</ThumbMode>
+      <EnableNeonCodegen>false</EnableNeonCodegen>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CLanguageStandard>c11</CLanguageStandard>
+      <PreprocessorDefinitions>_POSIX_C_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <AdditionalOptions>-march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=vfpv3-d16 -mthumb -mtls-dialect=gnu</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(SysRoot)\include\c++\7.2.1;$(SysRoot)\libc\usr\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SysRoot>$(SysRoot)</SysRoot>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SharedLibrarySearchPath>%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <AdditionalOptions>-march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=vfpv3-d16 -mthumb -mtls-dialect=gnu</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)ImportAfter\*.props" Condition="Exists('$(MSBuildThisFileDirectory)ImportAfter')" />
+</Project>

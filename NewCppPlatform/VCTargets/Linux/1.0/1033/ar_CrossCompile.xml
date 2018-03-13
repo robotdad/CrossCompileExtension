@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright, Microsoft Corporation, All rights reserved.-->
+<Rule Name="LIB" PageTemplate="tool" DisplayName="Archiver" SwitchPrefix="-" Order="40" xmlns="http://schemas.microsoft.com/build/2009/properties" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Rule.Categories>
+    <Category Name="General" DisplayName="General" />
+    <Category Name="Command Line" DisplayName="Command Line" Subtype="CommandLine" />
+  </Rule.Categories>
+  <Rule.DataSource>
+    <DataSource Persistence="ProjectFile" ItemType="Lib" Label="" HasConfigurationCondition="true" />
+  </Rule.DataSource>
+  <EnumProperty Name="Command" DisplayName="Command" Description="Command for AR utility." Category="General" Visible="false" F1Keyword="VC.Project.Ar.Command">
+    <EnumProperty.Arguments>
+      <Argument Property="CreateIndex" IsRequired="false" />
+      <Argument Property="CreateThinArchive" IsRequired="false" />
+      <Argument Property="NoWarnOnCreate" IsRequired="false" />
+      <Argument Property="TruncateTimestamp" IsRequired="false" />
+      <Argument Property="SuppressStartupBanner" IsRequired="false" />
+      <Argument Property="Verbose" IsRequired="false" />
+    </EnumProperty.Arguments>
+    <EnumValue Name="Delete" Switch="d" DisplayName="Delete" Description="Delete file(s) from the archive." />
+    <EnumValue Name="Move" Switch="m" DisplayName="Move" Description="Move file(s) in the archive." />
+    <EnumValue Name="Print" Switch="p" DisplayName="Print" Description="Print file(s) found in the archive." />
+    <EnumValue Name="Quick" Switch="q" DisplayName="Quick" Description="Quick append file(s) to the archive." />
+    <EnumValue Name="Replacement" Switch="r" DisplayName="Replacement" Description="Replace existing or insert new file(s) into the archive." />
+    <EnumValue Name="Table" Switch="t" DisplayName="Table" Description="Display contents of archive." />
+    <EnumValue Name="Extract" Switch="x" DisplayName="Extract" Description="Extract file(s) from the archive." />
+  </EnumProperty>
+  <BoolProperty Name="CreateIndex" DisplayName="Create Archive Index" Description="Create an archive index. This can speed up linking and reduce dependency within its own library. (ranlib)" SwitchPrefix="" Category="General" Switch="s" F1Keyword="VC.Project.Ar.CreateIndex" />
+  <BoolProperty Name="CreateThinArchive" DisplayName="Create Thin Archive" Description="Create a thin archive. A thin archive contains relative paths to the objects instead of embedding the objects. Switching between Thin and Normal requires deleting the existing library." SwitchPrefix="" Category="General" Switch="T" F1Keyword="VC.Project.Ar.CreateThinArchive" />
+  <BoolProperty Name="NoWarnOnCreate" DisplayName="No Warning On Create" Description="Do not warn when the library is created." SwitchPrefix="" Category="General" Switch="c" F1Keyword="VC.Project.Ar.NoWarnOnCreate" />
+  <BoolProperty Name="TruncateTimestamp" DisplayName="Truncate Timestamp" Description="Use zero for timestamps and uids/gids." SwitchPrefix="" Category="General" Switch="D" F1Keyword="VC.Project.Ar.TruncateTimestamp" />
+  <BoolProperty ReverseSwitch="V" Name="SuppressStartupBanner" DisplayName="Suppress Startup Banner" Description="Do not show version number." SwitchPrefix="" Category="General" F1Keyword="VC.Project.Ar.SuppressStartupBanner" />
+  <BoolProperty Name="Verbose" DisplayName="Verbose" Description="Verbose" SwitchPrefix="" Category="General" Switch="v" F1Keyword="VC.Project.Ar.Verbose" />
+  <StringProperty Name="AdditionalOptions" DisplayName="Additional Options" Description="Additional Options." Category="Command Line" F1Keyword="vc.project.AdditionalOptionsPage" />
+  <StringProperty Subtype="file" Name="OutputFile" DisplayName="Output File" Description="The /OUT option overrides the default name and location of the library." SwitchPrefix="" Category="General" Separator=" " F1Keyword="VC.Project.Ar.OutputFile" />
+</Rule>
