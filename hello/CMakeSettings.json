@@ -1,0 +1,21 @@
+{
+  // See https://go.microsoft.com//fwlink//?linkid=834763 for more information about this file.
+  "configurations": [
+    {
+      "name": "gnueabihf-Debug",
+      "inheritEnvironments": [ "linux-arm" ],
+      "environments": [
+        {
+          "INCLUDE": "C:/tools/gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.2.1"
+        }
+      ],
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=toolchain\\Toolchain-RaspberryPi.cmake",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
+    }
+  ]
+}
