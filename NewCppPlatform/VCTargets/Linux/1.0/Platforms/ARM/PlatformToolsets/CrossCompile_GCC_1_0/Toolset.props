@@ -28,7 +28,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   <Import Project="$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\CrossCompile.props" />
 
   <PropertyGroup>
-    <SysRoot Condition="'$(SysRoot)' == ''">$(CrossCompileSdkPath)\$(DebugMachineTypeSysRoot)</SysRoot>
+    <SysRoot Condition="'$(SysRoot)' == ''">$(CrossCompileSdkPath)</SysRoot>
     <TargetTriplet>arm-linux-gnueabihf</TargetTriplet>
     <CCompileToolExe Condition="'$(CCompileToolExe)' == ''">$(TargetTriplet)-gcc.exe</CCompileToolExe>
     <CppCompileToolExe Condition="'$(CppCompileToolExe)' == ''">$(TargetTriplet)-gcc.exe</CppCompileToolExe>
@@ -50,18 +50,11 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <ExceptionHandling>Disabled</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <CLanguageStandard>c11</CLanguageStandard>
-      <PreprocessorDefinitions>_POSIX_C_SOURCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CppLanguageStandard>Default</CppLanguageStandard>
       <AdditionalOptions>-march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=vfpv3-d16 -mthumb -mtls-dialect=gnu</AdditionalOptions>
-      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(SysRoot)\include\c++\7.2.1;$(SysRoot)\libc\usr\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(CrossCompileIncludePath)\include\c++\7.2.1;$(CrossCompileIncludePath)\include\c++\7.2.1\arm-linux-gnueabihf;$(CrossCompileIncludePath)\include\c++\7.2.1\backward;$(CrossCompileSdkPath)\lib\gcc\arm-linux-gnueabihf\7.2.1\include;$(CrossCompileSdkPath)\lib\gcc\arm-linux-gnueabihf\7.2.1\include-fixed;$(CrossCompileIncludePath)\include;$(CrossCompileIncludePath)\libc\usr\include</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <SysRoot>$(SysRoot)</SysRoot>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <SharedLibrarySearchPath>%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
-      <AdditionalOptions>-march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=vfpv3-d16 -mthumb -mtls-dialect=gnu</AdditionalOptions>
-    </Link>
   </ItemDefinitionGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)ImportAfter\*.props" Condition="Exists('$(MSBuildThisFileDirectory)ImportAfter')" />
