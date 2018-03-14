@@ -232,9 +232,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
      <Copy SourceFiles="@(ContentFilesProjectOutputGroupDependency->FullPath()->Distinct())" DestinationFiles="$(TargetDir)\approot$(TargetName)\%(ContentFilesProjectOutputGroupDependency.TargetPath)" SkipUnchangedFiles="true" Condition="'@(ContentFilesProjectOutputGroupDependency)' != ''">
        <Output TaskParameter="CopiedFiles" ItemName="ContentCopiedToOutDir" />
      </Copy>
-     
-     <!--<WriteLinesToFile File="$(TLogLocation)$(ProjectName).write.1u.tlog" Lines="^$(ProjectDir)$(ImageMetadataFileName);@(ContentCopiedToOutDir)" Overwrite="false" Encoding="Unicode" Condition="'@(ContentCopiedToOutDir)' != ''"/>--> 
-  </Target>
+       </Target>
   
   <!-- Designtime definitions -->
   <!-- Property pages -->
@@ -258,5 +256,5 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   </ItemGroup>
 
   <Import Project="$(LinuxCommonTargetsPath)\Linux.Cross.Common.targets" />
-  <Import Project="$(LinuxCommonTargetsPath)\Linux.Common.targets" />
+  <!--<Import Project="$(LinuxCommonTargetsPath)\Linux.Common.targets" />-->
 </Project>

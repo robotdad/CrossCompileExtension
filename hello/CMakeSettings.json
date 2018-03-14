@@ -6,7 +6,7 @@
       "inheritEnvironments": [ "linux-arm" ],
       "environments": [
         {
-          "INCLUDE": "C:/tools/gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.2.1"
+          "INCLUDE": "c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\arm-linux-gnueabihf\\include\\c++\\7.2.1;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\arm-linux-gnueabihf\\include\\c++\\7.2.1\\arm-linux-gnueabihf;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\arm-linux-gnueabihf\\include\\c++\\7.2.1\\backward;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\lib\\gcc\\arm-linux-gnueabihf\\7.2.1\\include;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\lib\\gcc\\arm-linux-gnueabihf\\7.2.1\\include-fixed;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\arm-linux-gnueabihf\\include;c:\\tools\\gcc-linaro-7.2.1-2017.11-i686-mingw32_arm-linux-gnueabihf\\arm-linux-gnueabihf\\libc\\usr\\include"
         }
       ],
       "generator": "Ninja",

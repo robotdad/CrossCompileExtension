@@ -62,21 +62,9 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <AddItemTemplateGuid Condition="'$(AddItemTemplateGuid)' == ''">{EB21DC10-A496-4D6C-B221-49E4C7F8FB0B}</AddItemTemplateGuid>
 
     <!-- Add all the paths to match Linux.props-->
-    <ISenseIncludePath>$(ISenseIncludePath);$(CrossCompileIncludePath)\arm-linux-gnueabihf\include\c++\7.2.1</ISenseIncludePath>
+    <ISenseIncludePath>$(ISenseIncludePath);$(CrossCompileIncludePath)\arm-linux-gnueabihf\include\c++\7.2.1;$(CrossCompileIncludePath)\arm-linux-gnueabihf\include\c++\7.2.1\arm-linux-gnueabihf;$(CrossCompileIncludePath)\arm-linux-gnueabihf\include\c++\7.2.1\backward;$(CrossCompileIncludePath)\lib\gcc\arm-linux-gnueabihf\7.2.1\include;$(CrossCompileIncludePath)\lib\gcc\arm-linux-gnueabihf\7.2.1\include-fixed;$(CrossCompileIncludePath)\arm-linux-gnueabihf\include;$(CrossCompileIncludePath)\arm-linux-gnueabihf\libc\usr\include</ISenseIncludePath>
 
     <IncludePath Condition="'$(DesignTimeBuild)' == 'true'">$(IncludePath);$(ISenseIncludePath)</IncludePath>
     <UseMultiToolTask Condition="'$(UseMultiToolTask)' == ''">true</UseMultiToolTask>
   </PropertyGroup>
-
-  <!--<ItemDefinitionGroup>
-    <Image>
-      <DeploymentContent Condition="'%(Image.DeploymentContent)'==''">true</DeploymentContent>
-    </Image>
-    <Media>
-      <DeploymentContent Condition="'%(Media.DeploymentContent)'==''">true</DeploymentContent>
-    </Media>
-    <Text>
-      <DeploymentContent Condition="'%(Text.DeploymentContent)'==''">true</DeploymentContent>
-    </Text>
-  </ItemDefinitionGroup>-->
 </Project>
